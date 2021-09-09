@@ -1,1 +1,0 @@
-export { PxlPlayer } from './PxlPlayer';
