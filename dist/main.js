@@ -44,7 +44,6 @@ var PxlPlayer = function (_a) {
         });
     });
     React.useEffect(function () {
-        console.log(options);
         if (loaded) {
             if (!element.current) {
                 return;

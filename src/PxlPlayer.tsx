@@ -9,11 +9,10 @@ declare global {
 export type PxlPlayerInitOptions = {
   eventId: string;
   clientId: string;
-  accessToken: string;
-  refreshToken: string;
+  code: string;
+  endpoint: string;
   domain: string;
   i18n?: 'en-US' | 'ja-JP';
-  useChat?: boolean;
 };
 
 type Props = {
@@ -32,7 +31,6 @@ export const PxlPlayer = ({ options, className }: Props) => {
   });
 
   useEffect(() => {
-    console.log(options);
     if (loaded) {
       if (!element.current) {
         return;

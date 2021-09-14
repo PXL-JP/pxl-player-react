@@ -36,7 +36,6 @@ var PxlPlayer = function (_a) {
         });
     });
     useEffect(function () {
-        console.log(options);
         if (loaded) {
             if (!element.current) {
                 return;

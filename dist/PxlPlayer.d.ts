@@ -9,11 +9,10 @@ declare global {
 export declare type PxlPlayerInitOptions = {
     eventId: string;
     clientId: string;
-    accessToken: string;
-    refreshToken: string;
+    code: string;
+    endpoint: string;
     domain: string;
     i18n?: 'en-US' | 'ja-JP';
-    useChat?: boolean;
 };
 declare type Props = {
     options: PxlPlayerInitOptions;
