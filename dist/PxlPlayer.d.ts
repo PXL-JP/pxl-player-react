@@ -9,8 +9,9 @@ declare global {
 export declare type PxlPlayerInitOptions = {
     eventId: string;
     clientId: string;
-    code: string;
-    endpoint: string;
+    code?: string;
+    endpoint?: string;
+    secret?: string;
     domain: string;
     i18n?: 'en-US' | 'ja-JP';
 };
