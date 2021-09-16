@@ -11,6 +11,7 @@ export declare type PxlPlayerInitOptions = {
     clientId: string;
     code: string;
     endpoint: string;
+    internalSession?: string;
     domain: string;
     i18n?: 'en-US' | 'ja-JP';
 };
