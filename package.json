@@ -1,6 +1,6 @@
 {
   "name": "@pxljp/pxl-player-react",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "React wrapper for pxl-player",
   "main": "dist/main.js",
   "module": "dist/main.es.js",
