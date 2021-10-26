@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from 'react';
 declare global {
   interface Window {
     initPxlPlayer: (options: PxlPlayerInitOptions & { rootElement: HTMLDivElement }) => {};
+    unmountPxlPlayer: () => void;
   }
 }
 
@@ -29,7 +30,10 @@ export const PxlPlayer = ({ options, className }: Props) => {
     loadPlayerScript(() => {
       isLoaded(true);
     });
-  });
+    return () => {
+      window.unmountPxlPlayer();
+    };
+  }, []);
 
   useEffect(() => {
     if (loaded) {
@@ -38,9 +42,15 @@ export const PxlPlayer = ({ options, className }: Props) => {
       }
       const data = {
         ...options,
-        rootElement: element.current,
+        rootElement: element.current
       };
-      window.initPxlPlayer(data);
+      if (window.initPxlPlayer) {
+        window.initPxlPlayer(data);
+      } else {
+        setTimeout(() => {
+          window.initPxlPlayer(data);
+        }, 1000);
+      }
     }
   }, [loaded]);
 

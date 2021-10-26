@@ -42,14 +42,24 @@ var PxlPlayer = function (_a) {
         loadPlayerScript(function () {
             isLoaded(true);
         });
-    });
+        return function () {
+            window.unmountPxlPlayer();
+        };
+    }, []);
     React.useEffect(function () {
         if (loaded) {
             if (!element.current) {
                 return;
             }
-            var data = __assign(__assign({}, options), { rootElement: element.current });
-            window.initPxlPlayer(data);
+            var data_1 = __assign(__assign({}, options), { rootElement: element.current });
+            if (window.initPxlPlayer) {
+                window.initPxlPlayer(data_1);
+            }
+            else {
+                setTimeout(function () {
+                    window.initPxlPlayer(data_1);
+                }, 1000);
+            }
         }
     }, [loaded]);
     return (React__default['default'].createElement(React__default['default'].Fragment, null,
