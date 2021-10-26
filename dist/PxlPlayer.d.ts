@@ -4,6 +4,7 @@ declare global {
         initPxlPlayer: (options: PxlPlayerInitOptions & {
             rootElement: HTMLDivElement;
         }) => {};
+        unmountPxlPlayer: () => void;
     }
 }
 export declare type PxlPlayerInitOptions = {
@@ -11,7 +12,7 @@ export declare type PxlPlayerInitOptions = {
     clientId: string;
     code: string;
     endpoint: string;
-    internalSession?: string;
+    getHeaderAuthorization?: () => string;
     domain: string;
     i18n?: 'en-US' | 'ja-JP';
 };
