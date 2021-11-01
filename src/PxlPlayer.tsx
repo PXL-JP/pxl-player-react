@@ -20,16 +20,17 @@ export type PxlPlayerInitOptions = {
 type Props = {
   options: PxlPlayerInitOptions;
   className?: string;
+  branch?: string;
 };
 
-export const PxlPlayer = ({ options, className }: Props) => {
+export const PxlPlayer = ({ options, className, branch }: Props) => {
   const element = useRef<HTMLDivElement>(null);
   const [loaded, isLoaded] = useState(false);
 
   useEffect(() => {
     loadPlayerScript(() => {
       isLoaded(true);
-    });
+    }, branch);
     return () => {
       window.unmountPxlPlayer();
     };
@@ -61,11 +62,11 @@ export const PxlPlayer = ({ options, className }: Props) => {
   );
 };
 
-const loadPlayerScript = (callback: () => void) => {
+const loadPlayerScript = (callback: () => void, branch?: string) => {
   const existingScript = document.getElementById('pxl-player-script');
   if (!existingScript) {
     const script = document.createElement('script');
-    script.src = 'https://player.pxl.jp/l/en-US/player.js';
+    script.src = branch ? `https://player.pxl.jp/b/${branch}/l/en-US/player.js` : 'https://player.pxl.jp/l/en-US/player.js';
     script.async = false;
     script.id = 'pxl-player-script';
     document.body.appendChild(script);
