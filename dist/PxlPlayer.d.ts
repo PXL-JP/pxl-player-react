@@ -19,6 +19,7 @@ export declare type PxlPlayerInitOptions = {
 declare type Props = {
     options: PxlPlayerInitOptions;
     className?: string;
+    branch?: string;
 };
-export declare const PxlPlayer: ({ options, className }: Props) => JSX.Element;
+export declare const PxlPlayer: ({ options, className, branch }: Props) => JSX.Element;
 export {};
