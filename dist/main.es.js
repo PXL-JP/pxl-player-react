@@ -27,13 +27,13 @@ var __assign = function() {
 };
 
 var PxlPlayer = function (_a) {
-    var options = _a.options, className = _a.className;
+    var options = _a.options, className = _a.className, branch = _a.branch;
     var element = useRef(null);
     var _b = useState(false), loaded = _b[0], isLoaded = _b[1];
     useEffect(function () {
         loadPlayerScript(function () {
             isLoaded(true);
-        });
+        }, branch);
         return function () {
             window.unmountPxlPlayer();
         };
@@ -57,11 +57,11 @@ var PxlPlayer = function (_a) {
     return (React.createElement(React.Fragment, null,
         React.createElement("div", { style: { width: '100%', height: '100%' }, className: className, ref: element })));
 };
-var loadPlayerScript = function (callback) {
+var loadPlayerScript = function (callback, branch) {
     var existingScript = document.getElementById('pxl-player-script');
     if (!existingScript) {
         var script = document.createElement('script');
-        script.src = 'https://player.pxl.jp/l/en-US/player.js';
+        script.src = branch ? "https://player.pxl.jp/b/" + branch + "/l/en-US/player.js" : 'https://player.pxl.jp/l/en-US/player.js';
         script.async = false;
         script.id = 'pxl-player-script';
         document.body.appendChild(script);
